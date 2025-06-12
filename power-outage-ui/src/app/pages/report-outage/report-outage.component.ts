@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { OutageService } from '../../services/outage.service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-report-outage',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule
+  ],
   templateUrl: './report-outage.component.html',
   styleUrl: './report-outage.component.scss'
 })
