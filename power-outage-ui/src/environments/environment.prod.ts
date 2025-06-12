@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:4200'
+  apiUrl: 'https://power-outage-tracker-2j8u.onrender.com'
 };
