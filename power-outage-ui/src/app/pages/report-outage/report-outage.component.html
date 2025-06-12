@@ -31,4 +31,12 @@
     <p *ngIf="successMessage" class="text-green-600 mt-3">{{ successMessage }}</p>
     <p *ngIf="errorMessage" class="text-red-600 mt-3">{{ errorMessage }}</p>
   </form>
+  <div class="mb-4">
+  <button
+    class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+    (click)="goToList()"
+  >
+      View Outage List
+    </button>
+  </div>
 </div>

@@ -21,4 +21,9 @@ export class OutageService {
   resolve(id:number){
     return this.http.patch(`${this.api}/${id}/resolve`, {})
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.api}/${id}`)
+  }
+
 }

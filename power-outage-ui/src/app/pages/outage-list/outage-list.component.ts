@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OutageService } from '../../services/outage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-outage-list',
@@ -18,8 +19,11 @@ export class OutageListComponent implements OnInit {
   loading = true;
   error = '';
 
-  constructor(private outageService: OutageService){}
+  constructor(private outageService: OutageService, private router: Router){}
 
+  goToReport() {
+  this.router.navigate(['/report']);
+  }
   ngOnInit(){
     this.outageService.getAllOutages().subscribe({
       next: (data: any)=> {
@@ -40,5 +44,13 @@ export class OutageListComponent implements OnInit {
         o.id === id ? { ...o, resolved: true } : o
       )
     })
+  }
+
+  deleteOutage(id: number){
+    if(!confirm('Are you sure you want to delete this outage?')) return;
+
+    this.outageService.delete(id).subscribe(() => {
+      this.outages = this.outages.filter(o => o.id !== id)
+    });
   }
 }

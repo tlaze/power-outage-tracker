@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { OutageService } from '../../services/outage.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report-outage',
@@ -21,11 +22,15 @@ export class ReportOutageComponent {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private outageService: OutageService){
+  constructor(private fb: FormBuilder, private outageService: OutageService, private router: Router){
     this.outageForm = this.fb.group({
       location: ['', Validators.required],
       description: ['', [Validators.required, Validators.minLength(10)]]
     })
+  }
+
+  goToList() {
+  this.router.navigate(['/list']);
   }
 
   onSubmit(){
