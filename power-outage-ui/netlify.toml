@@ -1,0 +1,9 @@
+[build]
+  base = "power-outage-ui"
+  publish = "dist/power-outage-ui/browser"
+  command = "npm run build -- --configuration production"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://power-outage-api.onrender.com/:splat"
+  status = 200
